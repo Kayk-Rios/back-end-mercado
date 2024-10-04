@@ -1,0 +1,20 @@
+import { Controller, Get } from '@nestjs/common';
+import { produtos, Produto } from 'src/core';
+
+@Controller('produtos')
+export class ProdutoController {
+        
+    @Get()
+    obterProdutos() : Produto []{
+        return produtos.map((produto)=>({
+
+                ...produto,
+                especificacoes: {destaque: produto.especificacoes.destaque},
+
+        }))
+
+    }
+
+
+
+}
